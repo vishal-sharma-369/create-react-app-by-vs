@@ -1,0 +1,39 @@
+module.exports = 
+{
+    entry: "./src/index.js",
+    module:
+    {
+        rules:
+        [
+            {
+                test:/\.js$/,
+                exclude:/node_modules/,
+                use:"babel-loader"
+            },
+            {
+                test:/\.css$/,
+                use:['style-loader','css-loader']
+            },
+            {
+                test:/\.scss$/,
+                use:['style-loader','css-loader','sass-loader']
+            },
+            {
+                test:/\.html$/,
+                use:['html-loader']
+            },
+            {
+                test:/\.(png|jpg|jpeg|gif|img)$/,
+                use:
+                {
+                    loader:'file-loader',
+                    options:
+                    {
+                        name:'[name].[hash].[ext]',
+                        outputPath:'images'
+                    }
+                }
+            }
+        ]
+    }
+}
